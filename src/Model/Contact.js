@@ -1,3 +1,4 @@
+// model/Contact.js
 class Contact {
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         this.validateName(firstName, "First Name");
@@ -62,5 +63,4 @@ class Contact {
     }
 }
 
-// Ensure this is only exported once
 module.exports = Contact;
