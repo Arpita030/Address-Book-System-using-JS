@@ -7,8 +7,14 @@ addressBookService.addContact("Anshu", "Smith", "456 Elm St", "Satna", "Chattisg
 addressBookService.addContact("Deepshika", "Brown", "789 Oak St", "Chennai", "AndhraPradesh", "604003", "7654321098", "deepshika.brown@example.com");
 addressBookService.addContact("Rahul", "Sharma", "111 Pine St", "Katni", "MadhyaPradesh", "100045", "9876543221", "rahul.sharma@example.com");
 
-console.log("\nViewing Persons by City...");
+console.log("\nViewing Persons by City ");
 addressBookService.viewPersonsByCity();
 
-console.log("\nViewing Persons by State...");
+console.log("\nViewing Persons by State ");
 addressBookService.viewPersonsByState();
+
+console.log("\nCounting Persons by City ");
+addressBookService.countContactsByCity();
+
+console.log("\nCounting Persons by State ");
+addressBookService.countContactsByState();

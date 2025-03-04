@@ -102,6 +102,34 @@ class AddressBookService {
         });
         return stateGroups;
     }
+
+    countContactsByCity() {
+        const cityCount = this.addressBook.reduce((result, contact) => {
+            result[contact.city] = (result[contact.city] || 0) + 1;
+            return result;
+        }, {});
+
+        console.log("\nNumber of Contacts by City:");
+        Object.entries(cityCount).forEach(([city, count]) => {
+            console.log(city + ": " + count);
+        });
+
+        return cityCount;
+    }
+
+    countContactsByState() {
+        const stateCount = this.addressBook.reduce((result, contact) => {
+            result[contact.state] = (result[contact.state] || 0) + 1;
+            return result;
+        }, {});
+
+        console.log("\nNumber of Contacts by State:");
+        Object.entries(stateCount).forEach(([state, count]) => {
+            console.log(state + ": " + count);
+        });
+
+        return stateCount;
+    }
 }
 
 module.exports = AddressBookService;
