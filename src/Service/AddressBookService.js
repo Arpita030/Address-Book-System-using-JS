@@ -66,6 +66,48 @@ class AddressBookService {
         console.log("Total number of contacts: " + this.addressBook.length);
         return this.addressBook.length;
     }
+
+    findContactsByCity(city) {
+        let peopleInCity = this.addressBook.filter(contact => contact.city.toLowerCase() === city.toLowerCase());
+        
+        if (peopleInCity.length > 0) {
+            console.log("\nPeople in " + city + ":");
+            peopleInCity.forEach(contact => console.log(contact.displayContact()));
+        } else {
+            console.log("No contacts found in " + city);
+        }
+        return peopleInCity;
+    }
+
+    findContactsByState(state) {
+        let peopleInState = this.addressBook.filter(contact => contact.state.toLowerCase() === state.toLowerCase());
+
+        if (peopleInState.length > 0) {
+            console.log("\nPeople in " + state + ":");
+            peopleInState.forEach(contact => console.log(contact.displayContact()));
+        } else {
+            console.log("No contacts found in " + state);
+        }
+        return peopleInState;
+    }
+
+    countPeopleInCity(city) {
+        let count = this.addressBook.reduce((total, contact) => {
+            return contact.city.toLowerCase() === city.toLowerCase() ? total + 1 : total;
+        }, 0);
+        
+        console.log("Total people in " + city + ": " + count);
+        return count;
+    }
+
+    countPeopleInState(state) {
+        let count = this.addressBook.reduce((total, contact) => {
+            return contact.state.toLowerCase() === state.toLowerCase() ? total + 1 : total;
+        }, 0);
+
+        console.log("Total people in " + state + ": " + count);
+        return count;
+    }
 }
 
 module.exports = AddressBookService;
