@@ -8,7 +8,9 @@ addressBookService.addContact("Deepshika", "Brown", "789 Oak St", "Cheenaii", "A
 
 addressBookService.displayAllContacts();
 
-console.log("\nDeleting Contact: Anshu Smith");
+addressBookService.getContactCount();
+
+console.log("\nDeleting Contact: Anshu Smith...");
 addressBookService.deleteContact("Anshu", "Smith");
 
-addressBookService.displayAllContacts();
+addressBookService.getContactCount();

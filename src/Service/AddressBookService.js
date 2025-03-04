@@ -54,6 +54,11 @@ class AddressBookService {
             this.addressBook.forEach(contact => console.log(contact.displayContact()));
         }
     }
+
+    getContactCount() {
+        console.log("Total number of contacts: " + this.addressBook.length);
+        return this.addressBook.length;
+    }
 }
 
 module.exports = AddressBookService;
