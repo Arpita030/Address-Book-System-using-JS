@@ -19,7 +19,6 @@ class Contact {
         this.email = email;
     }
 
-    // Validate Name (First Name & Last Name)
     validateName(name, fieldName) {
         const namePattern = /^[A-Z][a-zA-Z]{2,}$/;
         if (!namePattern.test(name)) {
@@ -27,14 +26,12 @@ class Contact {
         }
     }
 
-    // Validate Address, City, and State (Minimum 4 characters)
     validateAddress(value, fieldName) {
         if (value.length < 4) {
             throw new Error(`${fieldName} must be at least 4 characters long.`);
         }
     }
 
-    // Validate Zip Code (6 digits)
     validateZip(zip) {
         const zipPattern = /^[0-9]{6}$/;
         if (!zipPattern.test(zip)) {
@@ -42,15 +39,13 @@ class Contact {
         }
     }
 
-    // Validate Phone Number (10-digit format)
     validatePhone(phone) {
-        const phonePattern = /^[6-9][0-9]{9}$/; // Starts with 6-9 and has 10 digits
+        const phonePattern = /^[6-9][0-9]{9}$/;
         if (!phonePattern.test(phone)) {
             throw new Error("Phone Number must be a valid 10-digit number.");
         }
     }
 
-    // Validate Email Address
     validateEmail(email) {
         const emailPattern = /^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/;
         if (!emailPattern.test(email)) {
@@ -67,5 +62,5 @@ class Contact {
     }
 }
 
-// Export the Contact class
+// Ensure this is only exported once
 module.exports = Contact;

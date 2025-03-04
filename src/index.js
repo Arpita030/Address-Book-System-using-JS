@@ -1,22 +1,21 @@
 const Contact = require("./Model/Contact");
 
+let addressBook = [];
 
-try {
-    // Valid Contact
-    const contact1 = new Contact(
-        "Arpita", "Doe", "123 Main St", "Katni", "Madhya Pradesh", "100001", "9876543210", "john.doe@example.com"
-    );
-    console.log(contact1.displayContact());
-} catch (error) {
-    console.error(`Error: ${error.message}`);
+function addContact(firstName, lastName, address, city, state, zip, phone, email) {
+    try {
+        const newContact = new Contact(firstName, lastName, address, city, state, zip, phone, email);
+        addressBook.push(newContact);
+        console.log(` Contact added successfully: ${firstName} ${lastName}`);
+    } catch (error) {
+        console.error(` Error adding contact: ${error.message}`);
+    }
 }
 
-try {
-    // Invalid Contact (First Name is too short)
-    const contact2 = new Contact(
-        "Jonbhgvf", "Smith", "456 Elm St", "Los Angeles", "CAjuhy", "900001", "9876543210", "jane.smith@example.com"
-    );
-    console.log(contact2.displayContact());
-} catch (error) {
-    console.error(`Error: ${error.message}`);
-}
+addContact("Arpita", "Doe", "123 Main St", "Katni", "MadhyaPradesh", "100001", "9876543210", "john.doe@example.com");
+addContact("Anshu", "Smith", "456 Elm St", "Satna", "Chattisgarh", "900042", "8765432109", "alice.smith@example.com");
+addContact("Deepshika", "Brown", "789 Oak St", "cheenaii", "AndraPradesh", "604003", "7654321098", "bob.brown@example.com");
+
+// Display all contacts in the Address Book
+console.log("\n Address Book Contacts:");
+addressBook.forEach(contact => console.log(contact.displayContact(1)));
