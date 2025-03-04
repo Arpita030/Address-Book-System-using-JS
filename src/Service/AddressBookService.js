@@ -68,45 +68,39 @@ class AddressBookService {
     }
 
     findContactsByCity(city) {
-        let peopleInCity = this.addressBook.filter(contact => contact.city.toLowerCase() === city.toLowerCase());
-        
-        if (peopleInCity.length > 0) {
-            console.log("\nPeople in " + city + ":");
-            peopleInCity.forEach(contact => console.log(contact.displayContact()));
-        } else {
-            console.log("No contacts found in " + city);
-        }
-        return peopleInCity;
+        return this.addressBook.filter(contact => contact.city.toLowerCase() === city.toLowerCase());
     }
 
     findContactsByState(state) {
-        let peopleInState = this.addressBook.filter(contact => contact.state.toLowerCase() === state.toLowerCase());
-
-        if (peopleInState.length > 0) {
-            console.log("\nPeople in " + state + ":");
-            peopleInState.forEach(contact => console.log(contact.displayContact()));
-        } else {
-            console.log("No contacts found in " + state);
-        }
-        return peopleInState;
+        return this.addressBook.filter(contact => contact.state.toLowerCase() === state.toLowerCase());
     }
 
-    countPeopleInCity(city) {
-        let count = this.addressBook.reduce((total, contact) => {
-            return contact.city.toLowerCase() === city.toLowerCase() ? total + 1 : total;
-        }, 0);
-        
-        console.log("Total people in " + city + ": " + count);
-        return count;
+    viewPersonsByCity() {
+        const cityGroups = this.addressBook.reduce((result, contact) => {
+            (result[contact.city] = result[contact.city] || []).push(contact);
+            return result;
+        }, {});
+
+        console.log("\nPersons Grouped by City:");
+        Object.entries(cityGroups).forEach(([city, contacts]) => {
+            console.log("\nCity: " + city);
+            contacts.forEach(contact => console.log(contact.displayContact()));
+        });
+        return cityGroups;
     }
 
-    countPeopleInState(state) {
-        let count = this.addressBook.reduce((total, contact) => {
-            return contact.state.toLowerCase() === state.toLowerCase() ? total + 1 : total;
-        }, 0);
+    viewPersonsByState() {
+        const stateGroups = this.addressBook.reduce((result, contact) => {
+            (result[contact.state] = result[contact.state] || []).push(contact);
+            return result;
+        }, {});
 
-        console.log("Total people in " + state + ": " + count);
-        return count;
+        console.log("\nPersons Grouped by State:");
+        Object.entries(stateGroups).forEach(([state, contacts]) => {
+            console.log("\nState: " + state);
+            contacts.forEach(contact => console.log(contact.displayContact()));
+        });
+        return stateGroups;
     }
 }
 
