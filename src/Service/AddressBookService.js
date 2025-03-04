@@ -1,4 +1,4 @@
-const Contact = require("../model/Contact");
+const Contact = require("../Model/Contact");
 
 class AddressBookService {
     constructor() {
@@ -6,6 +6,13 @@ class AddressBookService {
     }
 
     addContact(firstName, lastName, address, city, state, zip, phone, email) {
+        let duplicateCheck = this.addressBook.filter(contact => contact.firstName === firstName && contact.lastName === lastName);
+
+        if (duplicateCheck.length > 0) {
+            console.log("Duplicate Contact: " + firstName + " " + lastName + " already exists in the Address Book.");
+            return;
+        }
+
         try {
             const newContact = new Contact(firstName, lastName, address, city, state, zip, phone, email);
             this.addressBook.push(newContact);
