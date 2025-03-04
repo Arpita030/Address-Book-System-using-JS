@@ -18,3 +18,6 @@ addressBookService.countContactsByCity();
 
 console.log("\nCounting Persons by State ");
 addressBookService.countContactsByState();
+
+console.log("\nSorting Contacts Alphabetically...");
+addressBookService.sortContactsByName();

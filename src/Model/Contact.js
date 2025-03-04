@@ -1,4 +1,3 @@
-// model/Contact.js
 class Contact {
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         this.validateName(firstName, "First Name");
@@ -54,6 +53,7 @@ class Contact {
         }
     }
 
+    // Overriding toString method using displayContact()
     displayContact() {
         return `Contact Details:
         Name: ${this.firstName} ${this.lastName}

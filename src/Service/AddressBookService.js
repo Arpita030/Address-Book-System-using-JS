@@ -130,6 +130,14 @@ class AddressBookService {
 
         return stateCount;
     }
+
+    sortContactsByName() {
+        const sortedContacts = this.addressBook.sort((a, b) => a.firstName.localeCompare(b.firstName));
+
+        console.log("\nSorted Contacts Alphabetically by First Name:");
+        sortedContacts.forEach(contact => console.log(contact.displayContact()));
+    }
 }
 
 module.exports = AddressBookService;
+
