@@ -1,4 +1,4 @@
-const AddressBookService = require("./Service/AddressBookService");
+const AddressBookService = require("./service/AddressBookService");
 
 const addressBookService = new AddressBookService();
 
@@ -8,7 +8,7 @@ addressBookService.addContact("Deepshika", "Brown", "789 Oak St", "Cheenaii", "A
 
 addressBookService.displayAllContacts();
 
-console.log("\n Editing Contact: Arpita Doe...");
-addressBookService.editContact("Arpita", "Doe", { phone: "9998887776", email: "arpita.doe@example.com" });
+console.log("\nDeleting Contact: Anshu Smith");
+addressBookService.deleteContact("Anshu", "Smith");
 
 addressBookService.displayAllContacts();

@@ -1,4 +1,4 @@
-const Contact = require("../Model/Contact");
+const Contact = require("../model/Contact");
 
 class AddressBookService {
     constructor() {
@@ -9,9 +9,9 @@ class AddressBookService {
         try {
             const newContact = new Contact(firstName, lastName, address, city, state, zip, phone, email);
             this.addressBook.push(newContact);
-            console.log(` Contact added successfully: ${firstName} ${lastName}`);
+            console.log("Contact added successfully: " + firstName + " " + lastName);
         } catch (error) {
-            console.error(`Error adding contact: ${error.message}`);
+            console.error("Error adding contact: " + error.message);
         }
     }
 
@@ -22,7 +22,7 @@ class AddressBookService {
     editContact(firstName, lastName, newDetails) {
         const contact = this.findContact(firstName, lastName);
         if (!contact) {
-            console.log(` Contact ${firstName} ${lastName} not found.`);
+            console.log("Contact " + firstName + " " + lastName + " not found.");
             return;
         }
 
@@ -32,14 +32,25 @@ class AddressBookService {
             }
         });
 
-        console.log(` Contact ${firstName} ${lastName} updated successfully.`);
+        console.log("Contact " + firstName + " " + lastName + " updated successfully.");
+    }
+
+    deleteContact(firstName, lastName) {
+        const index = this.addressBook.findIndex(contact => contact.firstName === firstName && contact.lastName === lastName);
+        
+        if (index !== -1) {
+            this.addressBook.splice(index, 1);
+            console.log("Contact " + firstName + " " + lastName + " deleted successfully.");
+        } else {
+            console.log("Contact " + firstName + " " + lastName + " not found.");
+        }
     }
 
     displayAllContacts() {
         if (this.addressBook.length === 0) {
-            console.log(" Address Book is empty.");
+            console.log("Address Book is empty.");
         } else {
-            console.log("\n Address Book:");
+            console.log("\nAddress Book:");
             this.addressBook.forEach(contact => console.log(contact.displayContact()));
         }
     }
