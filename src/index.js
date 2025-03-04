@@ -21,3 +21,12 @@ addressBookService.countContactsByState();
 
 console.log("\nSorting Contacts Alphabetically...");
 addressBookService.sortContactsByName();
+
+console.log("\nSorting Contacts by City...");
+addressBookService.sortContactsByCity();
+
+console.log("\nSorting Contacts by State...");
+addressBookService.sortContactsByState();
+
+console.log("\nSorting Contacts by Zip...");
+addressBookService.sortContactsByZip();

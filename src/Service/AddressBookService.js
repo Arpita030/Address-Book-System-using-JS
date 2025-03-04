@@ -137,7 +137,35 @@ class AddressBookService {
         console.log("\nSorted Contacts Alphabetically by First Name:");
         sortedContacts.forEach(contact => console.log(contact.displayContact()));
     }
+
+    sortContactsByCity() {
+        const sortedContacts = this.addressBook
+            .map(contact => contact) 
+            .sort((a, b) => a.city.localeCompare(b.city));
+
+        console.log("\nSorted Contacts by City:");
+        sortedContacts.forEach(contact => console.log(contact.displayContact()));
+    }
+
+    sortContactsByState() {
+        const sortedContacts = this.addressBook
+            .map(contact => contact) 
+            .sort((a, b) => a.state.localeCompare(b.state));
+
+        console.log("\nSorted Contacts by State:");
+        sortedContacts.forEach(contact => console.log(contact.displayContact()));
+    }
+
+    sortContactsByZip() {
+        const sortedContacts = this.addressBook
+            .map(contact => contact)
+            .sort((a, b) => a.zip.localeCompare(b.zip)); // Sorting by ZIP as a string
+
+        console.log("\nSorted Contacts by Zip Code:");
+        sortedContacts.forEach(contact => console.log(contact.displayContact()));
+    }
 }
+
 
 module.exports = AddressBookService;
 
